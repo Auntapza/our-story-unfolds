@@ -206,3 +206,9 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
 }
+
+/* Image stack progress bar */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}

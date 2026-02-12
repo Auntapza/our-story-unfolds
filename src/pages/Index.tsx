@@ -79,9 +79,7 @@ const Index = () => {
       {phase === "interlude" && interludes[currentChapter] && (
         <ImageInterlude
           key={`interlude-${currentChapter}`}
-          imageUrl={interludes[currentChapter]!.imageUrl}
-          imageAlt={interludes[currentChapter]!.imageAlt}
-          caption={interludes[currentChapter]!.caption}
+          images={interludes[currentChapter]!.images}
           duration={interludes[currentChapter]!.duration}
           isActive={true}
           onComplete={handleInterludeComplete}

@@ -12,11 +12,15 @@ export interface Chapter {
   duration: number;      // ระยะเวลาแสดง (วินาที)
 }
 
-export interface ImageInterludeData {
+export interface InterludeImage {
   imageUrl: string;      // URL รูปภาพ
   imageAlt?: string;     // คำอธิบายรูป
   caption?: string;      // แคปชั่นใต้รูป
-  duration: number;      // ระยะเวลาแสดง (วินาที)
+}
+
+export interface ImageInterludeData {
+  images: InterludeImage[];  // อาร์เรย์ของรูปภาพ (สามารถใส่หลายรูปได้)
+  duration: number;          // ระยะเวลาต่อรูป (วินาที) - จะปัดเองเมื่อถึงเวลา
 }
 
 export interface CoverContent {
@@ -52,27 +56,29 @@ export const coverContent: CoverContent = {
 // ============================================================
 export const interludes: (ImageInterludeData | null)[] = [
   {
-    imageUrl: "/placeholder.svg",
-    imageAlt: "วันที่เราเจอกันครั้งแรก",
-    caption: "วันที่ทุกอย่างเริ่มต้น...",
+    images: [
+      { imageUrl: "/placeholder.svg", imageAlt: "วันที่เราเจอกันครั้งแรก", caption: "วันที่ทุกอย่างเริ่มต้น..." },
+      { imageUrl: "/placeholder.svg", imageAlt: "รอยยิ้มแรก", caption: "รอยยิ้มที่ฉันจำได้" },
+    ],
     duration: 5,
   },
   {
-    imageUrl: "/placeholder.svg",
-    imageAlt: "ช่วงเวลาที่หัวใจเริ่มเต้น",
-    caption: "ยิ้มที่ฉันจำได้ทุกครั้ง",
+    images: [
+      { imageUrl: "/placeholder.svg", imageAlt: "ช่วงเวลาที่หัวใจเริ่มเต้น", caption: "ยิ้มที่ฉันจำได้ทุกครั้ง" },
+    ],
     duration: 5,
   },
   {
-    imageUrl: "/placeholder.svg",
-    imageAlt: "ผ่านพายุด้วยกัน",
-    caption: "แม้วันที่ฝนตก เราก็ยังมีกัน",
+    images: [
+      { imageUrl: "/placeholder.svg", imageAlt: "ผ่านพายุด้วยกัน", caption: "แม้วันที่ฝนตก เราก็ยังมีกัน" },
+      { imageUrl: "/placeholder.svg", imageAlt: "กอดกัน", caption: "กอดที่อบอุ่นที่สุด" },
+    ],
     duration: 5,
   },
   {
-    imageUrl: "/placeholder.svg",
-    imageAlt: "ช่วงเวลาที่เรารัก",
-    caption: "ทุกวินาทีคือความทรงจำ",
+    images: [
+      { imageUrl: "/placeholder.svg", imageAlt: "ช่วงเวลาที่เรารัก", caption: "ทุกวินาทีคือความทรงจำ" },
+    ],
     duration: 5,
   },
   null, // บทสุดท้ายไม่ต้องมีรูปคั่น เพราะจะไปหน้า ending เลย
