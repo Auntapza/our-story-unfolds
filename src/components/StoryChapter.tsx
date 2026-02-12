@@ -67,17 +67,6 @@ const StoryChapter = ({ chapter, isActive, onComplete }: StoryChapterProps) => {
         <div className="w-16 mx-auto story-divider mb-8 animate-draw-line" />
       )}
 
-      {/* Image (if provided) */}
-      {chapter.imageUrl && (phase === "content" || phase === "quote" || phase === "complete") && (
-        <div className="mb-8 animate-fade-in">
-          <img
-            src={chapter.imageUrl}
-            alt={chapter.imageAlt || ""}
-            className="w-full max-w-md mx-auto rounded-sm shadow-lg opacity-90"
-          />
-        </div>
-      )}
-
       {/* Content */}
       {(phase === "content" || phase === "quote" || phase === "complete") && (
         <div className="mb-8">

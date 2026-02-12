@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface TypewriterTextProps {
   text: string;
@@ -17,23 +17,33 @@ const TypewriterText = ({
 }: TypewriterTextProps) => {
   const [displayed, setDisplayed] = useState("");
   const [started, setStarted] = useState(false);
+  const completedRef = useRef(false);
+  const onCompleteRef = useRef(onComplete);
 
+  // Keep the ref updated
+  onCompleteRef.current = onComplete;
+
+  // Reset when text changes
   useEffect(() => {
+    setDisplayed("");
+    setStarted(false);
+    completedRef.current = false;
     const delayTimer = setTimeout(() => setStarted(true), delay);
     return () => clearTimeout(delayTimer);
-  }, [delay]);
+  }, [text, delay]);
 
   useEffect(() => {
-    if (!started) return;
+    if (!started || completedRef.current) return;
     if (displayed.length < text.length) {
       const timer = setTimeout(() => {
         setDisplayed(text.slice(0, displayed.length + 1));
       }, speed);
       return () => clearTimeout(timer);
     } else {
-      onComplete?.();
+      completedRef.current = true;
+      onCompleteRef.current?.();
     }
-  }, [displayed, started, text, speed, onComplete]);
+  }, [displayed, started, text, speed]);
 
   if (!started) return null;
 
@@ -41,10 +51,14 @@ const TypewriterText = ({
     <span className={className}>
       {displayed}
       {displayed.length < text.length && (
-        <span className="inline-block w-[2px] h-[1em] bg-primary ml-[2px] align-text-bottom" style={{ animation: "blink-caret 0.75s step-end infinite" }} />
+        <span
+          className="inline-block w-[2px] h-[1em] bg-primary ml-[2px] align-text-bottom"
+          style={{ animation: "blink-caret 0.75s step-end infinite" }}
+        />
       )}
     </span>
   );
 };
 
 export default TypewriterText;
+
