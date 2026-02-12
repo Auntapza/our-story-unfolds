@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Cormorant Garamond', 'serif'],
+        handwriting: ['Dancing Script', 'cursive'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +62,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        gold: "hsl(var(--gold))",
+        "gold-light": "hsl(var(--gold-light))",
+        wine: "hsl(var(--wine))",
+        "wine-light": "hsl(var(--wine-light))",
+        rose: "hsl(var(--rose))",
+        parchment: "hsl(var(--parchment))",
+        "parchment-dark": "hsl(var(--parchment-dark))",
+        ink: "hsl(var(--ink))",
       },
       borderRadius: {
         lg: "var(--radius)",
