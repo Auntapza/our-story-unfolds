@@ -28,13 +28,13 @@ const StoryChapter = ({ chapter, isActive, onComplete }: StoryChapterProps) => {
       setTimeout(() => setPhase("quote"), 600);
     } else {
       setPhase("complete");
-      setTimeout(onComplete, 2000);
+      setTimeout(onComplete, (chapter.duration)*1000);
     }
   };
 
   const handleQuoteComplete = () => {
     setPhase("complete");
-    setTimeout(onComplete, 3000);
+    setTimeout(onComplete, (chapter.duration)*1000);
   };
 
   if (!isActive && phase === "hidden") return null;

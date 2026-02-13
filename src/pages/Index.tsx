@@ -4,16 +4,19 @@ import StoryChapter from "@/components/StoryChapter";
 import ImageInterlude from "@/components/ImageInterlude";
 import EndingPage from "@/components/EndingPage";
 import { chapters, interludes } from "@/data/storyContent";
+import ReactPlayer from 'react-player';
 
 type StoryPhase = "cover" | "chapter" | "interlude" | "ending";
 
 const Index = () => {
   const [phase, setPhase] = useState<StoryPhase>("cover");
   const [currentChapter, setCurrentChapter] = useState(0);
+  const [isPlaying, setIsplaying] = useState(false);
 
   const handleStart = useCallback(() => {
     setPhase("chapter");
     setCurrentChapter(0);
+    setIsplaying(true);
   }, []);
 
   const handleChapterComplete = useCallback(() => {
@@ -50,6 +53,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background parchment-texture relative overflow-hidden">
+      
+      <div className="fixed top-0 left-0 w-0 h-0 opacity-0 overflow-hidden pointer-events-none">
+        <ReactPlayer
+          src="https://www.youtube.com/watch?v=qOD-J0v05Jk" // เปลี่ยนเป็นลิ้งก์เพลงรักที่คุณชอบ
+          loop={true}
+          playing={isPlaying}
+          volume={0.4}
+          preload=""
+        />
+      </div>
+      
       {/* Progress bar */}
       {(phase === "chapter" || phase === "interlude") && (
         <div className="fixed top-0 left-0 right-0 z-40 h-[2px] bg-secondary">
