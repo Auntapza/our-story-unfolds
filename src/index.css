@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 94%;
+    --foreground: 20 20% 20%;
+
+    --card: 36 40% 90%;
+    --card-foreground: 20 20% 20%;
+
+    --popover: 36 33% 94%;
+    --popover-foreground: 20 20% 20%;
+
+    --primary: 348 60% 32%;
+    --primary-foreground: 36 33% 96%;
+
+    --secondary: 36 40% 86%;
+    --secondary-foreground: 20 20% 20%;
+
+    --muted: 36 25% 88%;
+    --muted-foreground: 20 10% 50%;
+
+    --accent: 40 60% 55%;
+    --accent-foreground: 20 20% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 25% 80%;
+    --input: 36 25% 80%;
+    --ring: 348 60% 32%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom tokens */
+    --gold: 40 60% 55%;
+    --gold-light: 40 50% 75%;
+    --parchment: 36 33% 94%;
+    --parchment-dark: 36 30% 85%;
+    --ink: 20 20% 20%;
+    --wine: 348 60% 32%;
+    --wine-light: 348 45% 50%;
+    --rose: 350 50% 75%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-handwriting: 'Dancing Script', cursive;
+  }
+
+  .dark {
+    --background: 20 20% 10%;
+    --foreground: 36 33% 94%;
+    --card: 20 20% 14%;
+    --card-foreground: 36 33% 94%;
+    --popover: 20 20% 10%;
+    --popover-foreground: 36 33% 94%;
+    --primary: 348 50% 45%;
+    --primary-foreground: 36 33% 96%;
+    --secondary: 20 15% 20%;
+    --secondary-foreground: 36 33% 94%;
+    --muted: 20 15% 20%;
+    --muted-foreground: 36 15% 60%;
+    --accent: 40 50% 45%;
+    --accent-foreground: 36 33% 96%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 20 15% 25%;
+    --input: 20 15% 25%;
+    --ring: 348 50% 45%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-handwriting {
+    font-family: var(--font-handwriting);
+  }
+}
+
+/* Typewriter cursor */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(var(--primary)); }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes page-turn {
+  0% { opacity: 0; transform: perspective(1200px) rotateY(-15deg) scale(0.95); }
+  100% { opacity: 1; transform: perspective(1200px) rotateY(0deg) scale(1); }
+}
+
+@keyframes draw-line {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-page-turn {
+  animation: page-turn 0.8s ease-out forwards;
+}
+
+.animate-draw-line {
+  animation: draw-line 1.5s ease-out forwards;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Parchment texture overlay */
+.parchment-texture {
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, hsl(var(--gold) / 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, hsl(var(--rose) / 0.05) 0%, transparent 50%);
+}
+
+/* Story page styles */
+.story-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+}
+
+/* Image stack progress bar */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
