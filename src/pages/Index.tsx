@@ -56,7 +56,7 @@ const Index = () => {
       
       <div className="fixed top-0 left-0 w-0 h-0 opacity-0 overflow-hidden pointer-events-none">
         <ReactPlayer
-          src="https://www.youtube.com/watch?v=qOD-J0v05Jk" // เปลี่ยนเป็นลิ้งก์เพลงรักที่คุณชอบ
+          src="song.mp3" // เปลี่ยนเป็นลิ้งก์เพลงรักที่คุณชอบ
           loop={true}
           playing={isPlaying}
           volume={0.4}
